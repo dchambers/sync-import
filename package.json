@@ -1,0 +1,36 @@
+{
+  "author": "Dominic Chambers",
+  "name": "sync-import",
+  "description": "Synchronous import of modules for SystemJS",
+  "version": "0.0.0",
+  "main": "dist/index.js",
+  "keywords": [
+    "SystemJS",
+    "synchronous",
+    "import"
+  ],
+  "homepage": "https://github.com/dchambers/sync-import",
+  "bugs": {
+    "url": "https://github.com/dchambers/sync-import/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dchambers/sync-import.git"
+  },
+  "scripts": {
+    "prepublish": "mkdirp dist && babel src/syncImport.js -o dist/index.js && browserify -t babelify -e src/syncImport.js -o dist/sync-import.js -s syncImport",
+    "test": "mocha --compilers js:babel/register src/URLUtils.js node_modules/systemjs/dist/system-csp-production.src.js test"
+  },
+  "dependencies": {
+    "bluebird": "^2.9.27"
+  },
+  "devDependencies": {
+    "babel": "^5.5.6",
+    "babelify": "^6.1.2",
+    "browserify": "^10.2.4",
+    "chai": "^3.0.0",
+    "mkdirp": "^0.5.1",
+    "mocha": "^2.2.5",
+    "systemjs": "^0.17.1"
+  }
+}
